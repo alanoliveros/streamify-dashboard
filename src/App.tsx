@@ -1,11 +1,10 @@
-import './App.css'
+import './App.scss'
+import Dashboard from "@/app/dashboard/Dashboard.tsx";
 
 function App() {
 
   return (
-    <>
-        <h1 className="text-3xl font-bold text-center">Hello World!</h1>
-    </>
+        <Dashboard/>
   )
 }
 
