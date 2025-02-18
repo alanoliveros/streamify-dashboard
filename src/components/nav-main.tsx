@@ -9,6 +9,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import {Link, useLocation} from "react-router-dom";
 
 export function NavMain({items,}: {
     items: {
@@ -22,16 +23,21 @@ export function NavMain({items,}: {
         }[]
     }[]
 }) {
+
+    const location = useLocation();
+
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Menu</SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (
-                    <SidebarMenuItem>
-                        <SidebarMenuButton tooltip={item.title}>
-                            {item.icon && <item.icon/>}
-                            <span>{item.title}</span>
-                        </SidebarMenuButton>
+                    <SidebarMenuItem key={item.url}>
+                        <Link to={item.url} style={{ textDecoration: "none", color: "inherit" }}>
+                            <SidebarMenuButton tooltip={item.title} isActive={location.pathname === item.url}>
+                                {item.icon && <item.icon />}
+                                <span>{item.title}</span>
+                            </SidebarMenuButton>
+                        </Link>
                     </SidebarMenuItem>
                 ))}
             </SidebarMenu>

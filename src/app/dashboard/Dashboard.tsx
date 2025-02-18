@@ -31,7 +31,6 @@ export default function Dashboard() {
                 <AppHeader theme={theme} toggleTheme={toggleTheme} mounted={mounted} />
 
                 <div className="flex flex-1 flex-col gap-4 p-4">
-
                     {/* Key Metrics Cards */}
                     <div className="flex flex-wrap gap-4">
                         {metrics.map((metric, index) => (

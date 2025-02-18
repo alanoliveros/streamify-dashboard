@@ -20,27 +20,27 @@ const data = {
     navMain: [
         {
             title: "Dashboard",
-            url: "#",
+            url: "/",
             icon: Grid,
         },
         {
             title: "Users",
-            url: "#",
+            url: "user",
             icon: Users,
         },
         {
             title: "Artists",
-            url: "#",
+            url: "artists",
             icon: Brush,
         },
         {
             title: "Revenue",
-            url: "#",
+            url: "revenue",
             icon: DollarSign,
         },
         {
             title: "Settings",
-            url: "#",
+            url: "settings",
             icon: Settings2,
         },
     ],
@@ -52,16 +52,11 @@ export function AppSidebar({...props}: React.ComponentProps<typeof Sidebar>) {
             <SidebarHeader>
                 <TeamSwitcher teams={data.teams}/>
             </SidebarHeader>
-
             <SidebarContent>
                 <NavMain items={data.navMain}/>
             </SidebarContent>
-
             <SidebarFooter>
-
             </SidebarFooter>
-
-
             <SidebarRail/>
         </Sidebar>
     )
