@@ -74,16 +74,16 @@ export default function Dashboard() {
                         <h3 className="text-lg font-semibold mb-2">Recent Streams</h3>
                         <DataTable
                             columns={[
-                                { key: "song", label: "Song Name" },
-                                { key: "artist", label: "Artist" },
+                                { key: "song", label: "Song Name", filterable: true },
+                                { key: "artist", label: "Artist", filterable: true },
                                 { key: "dateStreamed", label: "Date Streamed" },
                                 { key: "streamCount", label: "Stream Count" },
                                 { key: "userId", label: "User ID" },
                             ]}
                             data={recentStreams}
                         />
-
                     </div>
+
                 </div>
             </SidebarInset>
         </SidebarProvider>

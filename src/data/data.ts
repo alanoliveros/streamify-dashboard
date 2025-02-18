@@ -1,3 +1,5 @@
+import { StreamData } from "@/types/types";
+
 // Mock Data for Key Metrics
 export const metrics = [
     {title: "Total Users", value: "1,250,000", description: "Registered users"},
@@ -29,7 +31,7 @@ export const topSongsData = [
     {name: "Song E", streams: 300000}
 ];
 
-export const recentStreams = [
+export const recentStreams: StreamData[] = [
     {
         id: 1,
         song: "Blinding Lights",
