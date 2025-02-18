@@ -25,22 +25,22 @@ const data = {
         },
         {
             title: "Users",
-            url: "user",
+            url: "/user",
             icon: Users,
         },
         {
             title: "Artists",
-            url: "artists",
+            url: "/artists",
             icon: Brush,
         },
         {
             title: "Revenue",
-            url: "revenue",
+            url: "/revenue",
             icon: DollarSign,
         },
         {
             title: "Settings",
-            url: "settings",
+            url: "/settings",
             icon: Settings2,
         },
     ],
