@@ -1,12 +1,5 @@
 import * as React from "react"
-import {
-    AudioWaveform,
-    Command,
-    GalleryVerticalEnd,
-    Settings2,
-    Grid, Users, Brush, DollarSign,
-    Moon, Sun,
-} from "lucide-react"
+import {Music, Settings2, Grid, Users, Brush, DollarSign,} from "lucide-react"
 
 import {NavMain} from "@/components/nav-main"
 import {TeamSwitcher} from "@/components/team-switcher"
@@ -16,27 +9,12 @@ import {
     SidebarHeader,
     SidebarRail,
 } from "@/components/ui/sidebar"
-import { useTheme } from "./theme-provider"
-import {useEffect, useState} from "react";
-import { Button } from "./ui/button"
 
-// This is sample data.
 const data = {
     teams: [
         {
-            name: "Acme Inc",
-            logo: GalleryVerticalEnd,
-            plan: "Enterprise",
-        },
-        {
-            name: "Acme Corp.",
-            logo: AudioWaveform,
-            plan: "Startup",
-        },
-        {
-            name: "Evil Corp.",
-            logo: Command,
-            plan: "Free",
+            name: "Streamify",
+            logo: Music,
         },
     ],
     navMain: [
