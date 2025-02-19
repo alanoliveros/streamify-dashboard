@@ -1,50 +1,76 @@
-# React + TypeScript + Vite
+# Streamify - Music Streaming Analytics Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Streamify is a music streaming analytics dashboard designed to provide insightful data visualizations and key metrics for a fictional music streaming service. This dashboard helps management track user activity, revenue, and content performance through an intuitive and responsive user interface.
 
-Currently, two official plugins are available:
+## Features
+### Dashboard Overview
+- **Key Metrics:**
+    - Total Users: Total number of registered users.
+    - Active Users: Number of users who streamed at least one song in the last 30 days.
+    - Total Streams: Total number of songs streamed.
+    - Revenue: Revenue generated from subscriptions and advertisements.
+    - Top Artist: The artist with the most streams in the last 30 days.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Data Visualization
+- **User Growth Chart:** Line chart displaying user growth over the past 12 months.
+- **Revenue Distribution:** Pie chart showing revenue breakdown from different sources (e.g., Subscriptions, Ads).
+- **Top 5 Streamed Songs:** Bar chart displaying the most streamed songs in the past 30 days.
 
-## Expanding the ESLint configuration
+### Data Table
+- Displays recent streams with the following columns:
+    - Song Name
+    - Artist
+    - Date Streamed
+    - Stream Count
+    - User ID
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### User Interaction
+- **Sorting & Filtering:** Users can sort and filter the data table by date, stream count, artist, or song name.
+- **Chart Interactions:** Users can hover over chart elements to see exact values and filter data tables by clicking on pie chart segments.
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
+- **Framework:** Vite + React + TypeScript + SWC
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **UI Components:** Radix UI, ShadCN
+- **Charts & Data Visualization:** Recharts
+- **Routing:** React Router DOM
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/streamify-dashboard.git
+   cd streamify-dashboard
+   ```
+2. Install dependencies:
+   ```sh
+   pnpm install
+   ```
+3. Start the development server:
+   ```sh
+   pnpm dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Deployment
+The application can be deployed using services like:
+- **Vercel**: Deploy instantly using `vercel` CLI.
+- **Netlify**: Drag and drop the build folder.
+- **GitHub Pages**: Deploy via GitHub Actions or manual build upload.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Performance Optimization
+- Lazy loading and code splitting for faster loading.
+- Memoization to reduce unnecessary re-renders.
+- Optimized rendering for large datasets.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Future Enhancements
+- Real-time data updates.
+- More interactive filtering and drill-down analytics.
+- User authentication and role-based access.
+
+## Contribution Guidelines
+1. Fork the repository.
+2. Create a new branch (`feature-xyz`).
+3. Commit your changes and push.
+4. Open a pull request.
