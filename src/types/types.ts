@@ -7,3 +7,39 @@ export interface StreamData {
     streamCount: number;
     userId: string;
 }
+
+export interface SongData {
+    name: string;
+    streams: number;
+}
+
+export interface UserGrowthData {
+    month: string;
+    total: number;
+    active: number;
+}
+
+export interface RevenueData {
+    name: string;
+    value: number;
+}
+
+
+// Generic Table Column Type
+export interface Column<T> {
+    key: Extract<keyof T, string>;
+    label: string;
+    filterable?: boolean;
+}
+
+// Generic Table Props
+export interface DataTableProps<T> {
+    columns: Column<T>[];
+    data: T[];
+}
+
+// Sorting Configuration
+export interface SortConfig<T> {
+    key: keyof T;
+    direction: "asc" | "desc";
+}

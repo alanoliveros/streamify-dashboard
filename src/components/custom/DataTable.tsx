@@ -1,25 +1,7 @@
-// DataTable.tsx
-import React, { useState, useCallback } from "react";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { StreamData } from "@/types/types.ts"; // Import the type
-import { Input } from "../ui/input";
-
-interface Column<T> {
-    key: Extract<keyof T, string>;
-    label: string;
-    filterable?: boolean;
-}
-
-interface DataTableProps<T extends StreamData> {
-    columns: Column<T>[];
-    data: T[];
-}
-
-interface SortConfig<T> {
-    key: keyof T;
-    direction: "asc" | "desc";
-}
-
+import React, {useCallback, useState} from "react";
+import {DataTableProps, SortConfig, StreamData} from "@/types/types";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import {Input} from "../ui/input";
 
 export function DataTable<T extends StreamData>({ columns, data }: DataTableProps<T>) {
     const [sortConfig, setSortConfig] = useState<SortConfig<T> | null>(null);
@@ -28,9 +10,9 @@ export function DataTable<T extends StreamData>({ columns, data }: DataTableProp
     const sortedData = React.useMemo(() => {
         if (!sortConfig) return data;
 
-        const sorted = [...data].sort((a, b) => {
-            const aValue = a[sortConfig.key as keyof T];
-            const bValue = b[sortConfig.key as keyof T];
+        return [...data].sort((a, b) => {
+            const aValue = a[sortConfig.key];
+            const bValue = b[sortConfig.key];
 
             if (typeof aValue === "string" && typeof bValue === "string") {
                 return sortConfig.direction === "asc"
@@ -44,8 +26,6 @@ export function DataTable<T extends StreamData>({ columns, data }: DataTableProp
 
             return 0;
         });
-
-        return sorted;
     }, [data, sortConfig]);
 
     const filteredData = React.useMemo(() => {

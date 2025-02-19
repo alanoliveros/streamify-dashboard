@@ -1,6 +1,11 @@
+import { UserGrowthData } from "@/types/types";
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
-export function UserGrowthChart({ data }: { data: any[] }) {
+interface UserGrowthChartProps {
+    data: UserGrowthData[];
+}
+
+export function UserGrowthChart({ data }: UserGrowthChartProps) {
     return (
         <ResponsiveContainer width="100%" height={300}>
             <LineChart data={data}>

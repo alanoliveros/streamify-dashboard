@@ -1,6 +1,11 @@
+import { SongData } from "@/types/types";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-export function TopSongsBarChart({ data }: { data: any[] }) {
+interface TopSongsBarChartProps {
+    data: SongData[];
+}
+
+export function TopSongsBarChart({ data }: TopSongsBarChartProps) {
     return (
         <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data}>
