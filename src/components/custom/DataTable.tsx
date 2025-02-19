@@ -22,7 +22,7 @@ interface SortConfig {
 
 export function DataTable<T extends StreamData>({ columns, data }: DataTableProps<T>) {
     const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
-    const [filters, setFilters] = useState<Record<string, string>>({});
+    const [filters, setFilters] = useState<Partial<Record<keyof T, string>>>({});
 
     const sortedData = React.useMemo(() => {
         if (!sortConfig) return data;
@@ -51,13 +51,14 @@ export function DataTable<T extends StreamData>({ columns, data }: DataTableProp
         return sortedData.filter((row) => {
             return columns.every((column) => {
                 if (!column.filterable || !filters[column.key]) return true;
-                const rowValue = String(row[column.key]).toLowerCase();
-                return rowValue.includes(filters[column.key].toLowerCase());
+                const rowValue = String(row[column.key] ?? "").toLowerCase();
+                const filterValue = String(filters[column.key] ?? "").toLowerCase();
+                return rowValue.includes(filterValue);
             });
         });
     }, [sortedData, filters, columns]);
 
-    const handleSort = useCallback((key: string) => {
+    const handleSort = useCallback((key: keyof T) => {
         const direction = sortConfig?.key === key && sortConfig.direction === "asc" ? "desc" : "asc";
         setSortConfig({ key, direction });
     }, [sortConfig]);
@@ -114,7 +115,7 @@ export function DataTable<T extends StreamData>({ columns, data }: DataTableProp
                         <TableRow key={rowIndex}>
                             {columns.map((column) => (
                                 <TableCell key={String(column.key)}>
-                                    {row[column.key] as React.ReactNode}
+                                    {row[column.key] !== undefined ? (row[column.key] as React.ReactNode) : ""}
                                 </TableCell>
                             ))}
                         </TableRow>
