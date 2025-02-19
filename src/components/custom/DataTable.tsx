@@ -5,7 +5,7 @@ import { StreamData } from "@/types/types.ts"; // Import the type
 import { Input } from "../ui/input";
 
 interface Column<T> {
-    key: keyof T;
+    key: Extract<keyof T, string>;
     label: string;
     filterable?: boolean;
 }
@@ -15,13 +15,14 @@ interface DataTableProps<T extends StreamData> {
     data: T[];
 }
 
-interface SortConfig {
-    key: string;
+interface SortConfig<T> {
+    key: keyof T;
     direction: "asc" | "desc";
 }
 
+
 export function DataTable<T extends StreamData>({ columns, data }: DataTableProps<T>) {
-    const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
+    const [sortConfig, setSortConfig] = useState<SortConfig<T> | null>(null);
     const [filters, setFilters] = useState<Partial<Record<keyof T, string>>>({});
 
     const sortedData = React.useMemo(() => {
@@ -51,7 +52,7 @@ export function DataTable<T extends StreamData>({ columns, data }: DataTableProp
         return sortedData.filter((row) => {
             return columns.every((column) => {
                 if (!column.filterable || !filters[column.key]) return true;
-                const rowValue = String(row[column.key] ?? "").toLowerCase();
+                const rowValue = (row[column.key as keyof T] as unknown as string).toLowerCase();
                 const filterValue = String(filters[column.key] ?? "").toLowerCase();
                 return rowValue.includes(filterValue);
             });
