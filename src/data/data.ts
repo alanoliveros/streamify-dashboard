@@ -10,13 +10,20 @@ export const metrics = [
 ];
 
 export const userGrowthData = [
-    {month: "Jan", total: 1000000, active: 800000},
-    {month: "Feb", total: 1050000, active: 850000},
-    {month: "Mar", total: 1100000, active: 900000},
-    {month: "Apr", total: 1150000, active: 920000},
-    {month: "May", total: 1200000, active: 940000},
-    {month: "Jun", total: 1250000, active: 950000}
+    { month: "Jan", total: 1000000, active: 800000 },
+    { month: "Feb", total: 1050000, active: 850000 },
+    { month: "Mar", total: 1100000, active: 900000 },
+    { month: "Apr", total: 1150000, active: 920000 },
+    { month: "May", total: 1200000, active: 940000 },
+    { month: "Jun", total: 1250000, active: 950000 },
+    { month: "Jul", total: 1300000, active: 960000 },
+    { month: "Aug", total: 1350000, active: 970000 },
+    { month: "Sep", total: 1400000, active: 980000 },
+    { month: "Oct", total: 1450000, active: 990000 },
+    { month: "Nov", total: 1500000, active: 1000000 },
+    { month: "Dec", total: 1550000, active: 1020000 }
 ];
+
 
 export const revenueData = [
     {name: "Subscriptions", value: 300000},

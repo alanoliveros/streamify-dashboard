@@ -1,5 +1,5 @@
 import './App.scss';
-import Dashboard from "@/app/dashboard/Dashboard.tsx";
+import Dashboard from "@/pages/Dashboard.tsx";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Users from "@/pages/Users.tsx";

@@ -1,6 +1,6 @@
 import { RevenuePieChart, TopSongsBarChart, UserGrowthChart } from "@/components/charts";
 import { DataTable, MetricsCard } from "@/components/custom";
-import { metrics, userGrowthData, revenueData, topSongsData, recentStreams, COLORS } from "@/data/data";
+import { metrics, userGrowthData, revenueData, topSongsData, recentStreams, COLORS } from "@/data/data.ts";
 
 export default function Dashboard() {
     return (
