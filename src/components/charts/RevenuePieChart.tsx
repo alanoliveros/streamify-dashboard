@@ -1,30 +1,38 @@
-import { RevenueData } from "@/types/types";
-import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
+"use client";
 
-interface RevenuePieChartProps {
-    data: RevenueData[];
-    colors: string[];
-}
+import { Pie, PieChart } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { revenueData } from "@/data/data";
 
-export function RevenuePieChart({ data, colors }: RevenuePieChartProps) {
+const chartConfig = {
+    value: {
+        label: "Revenue",
+    },
+    Subscriptions: {
+        label: "Subscriptions",
+        color: "hsl(var(--chart-1))",
+    },
+    Ads: {
+        label: "Ads",
+        color: "hsl(var(--chart-2))",
+    },
+} satisfies ChartConfig;
+
+export function RevenuePieChart() {
     return (
-        <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-                <Pie
-                    data={data}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    label={({ name, percent }) => `${name} (${(percent * 100).toFixed(1)}%)`}
-                >
-                    {data.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                    ))}
-                </Pie>
-                <Tooltip />
-            </PieChart>
-        </ResponsiveContainer>
+        <Card>
+            <CardHeader>
+                <CardTitle>Revenue Distribution</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <ChartContainer config={chartConfig} className="mx-auto pb-0 [&_.recharts-pie-label-text]:fill-foreground">
+                    <PieChart>
+                        <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                        <Pie data={revenueData} dataKey="value" label nameKey="name" />
+                    </PieChart>
+                </ChartContainer>
+            </CardContent>
+        </Card>
     );
 }

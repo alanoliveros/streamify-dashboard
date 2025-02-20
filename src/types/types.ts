@@ -1,16 +1,9 @@
 // types.ts
-export interface StreamData {
-    id: number;
-    song: string;
-    artist: string;
-    dateStreamed: string;
-    streamCount: number;
-    userId: string;
-}
 
-export interface SongData {
+export interface RevenueData {
     name: string;
-    streams: number;
+    value: number;
+    fill: string;
 }
 
 export interface UserGrowthData {
@@ -19,11 +12,19 @@ export interface UserGrowthData {
     active: number;
 }
 
-export interface RevenueData {
+export interface TopSongData {
     name: string;
-    value: number;
+    streams: number;
 }
 
+export interface StreamData {
+    id: number;
+    song: string;
+    artist: string;
+    dateStreamed: string;
+    streamCount: number;
+    userId: string;
+}
 
 // Generic Table Column Type
 export interface Column<T> {
