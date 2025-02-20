@@ -1,19 +1,9 @@
-"use client"
+"use client";
 
-import { Pie, PieChart } from "recharts"
-
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-import {
-    ChartConfig,
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
-} from "@/components/ui/chart"
+import { Pie, PieChart } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { revenueData } from "@/data/data";
 
 const chartConfig = {
     value: {
@@ -27,27 +17,16 @@ const chartConfig = {
         label: "Ads",
         color: "hsl(var(--chart-2))",
     },
-} satisfies ChartConfig
-
-const revenueData = [
-    {name: "Subscriptions", value: 300000, fill: "hsl(var(--chart-1))"},
-    {name: "Ads", value: 200000, fill: "hsl(var(--chart-2))"},
-    {name: "Ads", value: 200000, fill: "hsl(var(--chart-2))"},
-    {name: "Ads", value: 200000, fill: "hsl(var(--chart-2))"},
-];
+} satisfies ChartConfig;
 
 export function RevenuePieChart() {
     return (
-        <Card className="flex flex-col">
-            <CardHeader className="pb-0">
+        <Card>
+            <CardHeader>
                 <CardTitle>Revenue Distribution</CardTitle>
-                {/*<CardDescription>January - June 2024</CardDescription>*/}
             </CardHeader>
-            <CardContent className="flex-1 pb-0">
-                <ChartContainer
-                    config={chartConfig}
-                    className="mx-auto max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
-                >
+            <CardContent>
+                <ChartContainer config={chartConfig} className="mx-auto pb-0 [&_.recharts-pie-label-text]:fill-foreground">
                     <PieChart>
                         <ChartTooltip content={<ChartTooltipContent hideLabel />} />
                         <Pie data={revenueData} dataKey="value" label nameKey="name" />
@@ -55,5 +34,5 @@ export function RevenuePieChart() {
                 </ChartContainer>
             </CardContent>
         </Card>
-    )
+    );
 }
