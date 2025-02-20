@@ -1,30 +1,59 @@
-import { RevenueData } from "@/types/types";
-import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
+"use client"
 
-interface RevenuePieChartProps {
-    data: RevenueData[];
-    colors: string[];
-}
+import { Pie, PieChart } from "recharts"
 
-export function RevenuePieChart({ data, colors }: RevenuePieChartProps) {
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card"
+import {
+    ChartConfig,
+    ChartContainer,
+    ChartTooltip,
+    ChartTooltipContent,
+} from "@/components/ui/chart"
+
+const chartConfig = {
+    value: {
+        label: "Revenue",
+    },
+    Subscriptions: {
+        label: "Subscriptions",
+        color: "hsl(var(--chart-1))",
+    },
+    Ads: {
+        label: "Ads",
+        color: "hsl(var(--chart-2))",
+    },
+} satisfies ChartConfig
+
+const revenueData = [
+    {name: "Subscriptions", value: 300000, fill: "hsl(var(--chart-1))"},
+    {name: "Ads", value: 200000, fill: "hsl(var(--chart-2))"},
+    {name: "Ads", value: 200000, fill: "hsl(var(--chart-2))"},
+    {name: "Ads", value: 200000, fill: "hsl(var(--chart-2))"},
+];
+
+export function RevenuePieChart() {
     return (
-        <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-                <Pie
-                    data={data}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    label={({ name, percent }) => `${name} (${(percent * 100).toFixed(1)}%)`}
+        <Card className="flex flex-col">
+            <CardHeader className="pb-0">
+                <CardTitle>Revenue Distribution</CardTitle>
+                {/*<CardDescription>January - June 2024</CardDescription>*/}
+            </CardHeader>
+            <CardContent className="flex-1 pb-0">
+                <ChartContainer
+                    config={chartConfig}
+                    className="mx-auto max-h-[250px] pb-0 [&_.recharts-pie-label-text]:fill-foreground"
                 >
-                    {data.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                    ))}
-                </Pie>
-                <Tooltip />
-            </PieChart>
-        </ResponsiveContainer>
-    );
+                    <PieChart>
+                        <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                        <Pie data={revenueData} dataKey="value" label nameKey="name" />
+                    </PieChart>
+                </ChartContainer>
+            </CardContent>
+        </Card>
+    )
 }

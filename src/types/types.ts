@@ -21,7 +21,6 @@ export interface UserGrowthData {
 
 export interface RevenueData {
     name: string;
-    value: number;
 }
 
 

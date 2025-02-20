@@ -9,34 +9,6 @@ export const metrics = [
     {title: "Top Artist", value: "Artist XYZ", description: "Most streamed artist"},
 ];
 
-export const userGrowthData = [
-    { month: "Jan", total: 1000000, active: 800000 },
-    { month: "Feb", total: 1050000, active: 850000 },
-    { month: "Mar", total: 1100000, active: 900000 },
-    { month: "Apr", total: 1150000, active: 920000 },
-    { month: "May", total: 1200000, active: 940000 },
-    { month: "Jun", total: 1250000, active: 950000 },
-    { month: "Jul", total: 1300000, active: 960000 },
-    { month: "Aug", total: 1350000, active: 970000 },
-    { month: "Sep", total: 1400000, active: 980000 },
-    { month: "Oct", total: 1450000, active: 990000 },
-    { month: "Nov", total: 1500000, active: 1000000 },
-    { month: "Dec", total: 1550000, active: 1020000 }
-];
-
-
-export const revenueData = [
-    {name: "Subscriptions", value: 300000},
-    {name: "Ads", value: 200000}
-];
-
-export const topSongsData = [
-    {name: "Song A", streams: 500000},
-    {name: "Song B", streams: 450000},
-    {name: "Song C", streams: 400000},
-    {name: "Song D", streams: 350000},
-    {name: "Song E", streams: 300000}
-];
 
 export const recentStreams: StreamData[] = [
     {
@@ -80,5 +52,3 @@ export const recentStreams: StreamData[] = [
         userId: "user_3141",
     },
 ];
-
-export const COLORS = ["#0088FE", "#00C49F"];
